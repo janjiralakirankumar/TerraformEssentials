@@ -13,8 +13,8 @@
 * [Lab-7: Creating a MySQL Database with RDS](https://github.com/janjiralakirankumar/TerraformEssentials#lab-7-creating-a-mysql-database-with-rds)
 * [Lab-8: Creating IAM Users, Groups using Terraform.](https://github.com/janjiralakirankumar/TerraformEssentials#lab-8-creating-iam-users-groups-using-terraform)
 * [Lab 9: Creating AWS resources using terraform modules](https://github.com/janjiralakirankumar/TerraformEssentials#lab-9-creating-aws-resources-using-terraform-modules)
-* [Frequently used Terraform Commands with Explanation](https://github.com/janjiralakirankumar/Terraform/blob/main/TerraformEssentials.md#frequently-used-terraform-commands-with-explanation)
-* [Reference Links](https://github.com/janjiralakirankumar/Terraform/blob/main/TerraformEssentials.md#reference-links)
+* [Frequently used Terraform Commands with Explanation](https://github.com/janjiralakirankumar/TerraformEssentials#frequently-used-terraform-commands-with-explanation)
+* [Reference Links](https://github.com/janjiralakirankumar/TerraformEssentials#reference-links)
 
 To begin with Lab-1, Login to AWS Console.
 ## Lab-1: Creating an EC2 Instance in AWS and Installing Terraform
