@@ -29,9 +29,8 @@ To begin with Lab-1, Login to AWS Console.
 After EC2 is ready:
 ```
 sudo hostnamectl set-hostname terraform
+bash
 ```
-* Hostname will appear if you exit and login again. Or 
-* You can type 'bash' and open another shell
 ```
 sudo apt update
 ```
@@ -39,10 +38,10 @@ sudo apt update
 sudo apt install wget unzip -y
 ```
 ```
-wget https://releases.hashicorp.com/terraform/1.5.5/terraform_1.5.4_linux_amd64.zip
+wget https://releases.hashicorp.com/terraform/1.5.7/terraform_1.5.7_linux_amd64.zip
 ```
 ```
-unzip terraform_1.5.5_linux_amd64.zip
+unzip terraform_1.5.7_linux_amd64.zip
 ```
 ```
 ls
@@ -76,12 +75,12 @@ Once LoggedIn check the account access
 ```
 aws s3 ls
 ```
+Or Use below command to check whether it is authenticated.
 ```
 aws iam list-users
 ```
 #### Task-2.1: Now we are ready to perform the labs
-* create directory as Lab1
-* create local file
+Create directory as Lab1 & create local file
 ```
 mkdir Lab1 && cd Lab1
 ```
@@ -110,8 +109,6 @@ terraform destroy
 #### Task 3: Launching your first AWS EC2 instance using Terraform 
 ```
 cd ~
-```
-```
 mkdir terraform-labs && cd terraform-labs/
 ```
 ```
