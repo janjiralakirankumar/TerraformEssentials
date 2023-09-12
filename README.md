@@ -25,7 +25,7 @@ To begin with Lab-1, Login to AWS Console.
 * Launch a **t2.micro** instance with OS version as **Ubuntu 20.04** in North Virginia (us-east-1) Region.
 * Use tag "**Name:Terraform-Server**"
 * In security groups, include ports **22** and **80**. 
-* login with username as "ubuntu".
+* login with username as "**ubuntu**".
 
 Once the EC2 is ready, follow the below Commands:
 ```
@@ -72,12 +72,12 @@ aws configure
 | ------------------ | ------------------------- |
 | AKIAIOSFODNN7EXAMPLE | wJalrXUtnFEMI/K7MDENG/bPxRfiCYEXAMPLEKEY |
 
-##### Note: If not available generate Credentials from AWS IAM Service
+##### Note: If Credentials are not available generate from AWS IAM Service
 Once LoggedIn check the account access
 ```
 aws s3 ls
 ```
-Or Use below command to check whether it is authenticated.
+**Or** Use below command to check whether it is authenticated.
 ```
 aws iam list-users
 ```
