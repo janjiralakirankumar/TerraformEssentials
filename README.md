@@ -475,6 +475,8 @@ cd ..
 ```
 rm -rf remote-state-lab
 ```
+Empty the Bucket and then Delete the Bucket.
+
 ## Lab 5: Launching VPC and EC2 Instance 
 
 #### Task 1: Launching VPC and creating subnets
