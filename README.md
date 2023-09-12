@@ -27,7 +27,7 @@ To begin with Lab-1, Login to AWS Console.
 * In security groups, include ports **22** and **80**. 
 * login with username as "ubuntu".
 
-After EC2 is ready:
+Once the EC2 is ready, follow the below Commands:
 ```
 sudo hostnamectl set-hostname terraform
 bash
