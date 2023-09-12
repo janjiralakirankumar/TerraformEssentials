@@ -16,8 +16,9 @@
 * [Frequently used Terraform Commands with Explanation](https://github.com/janjiralakirankumar/TerraformEssentials#frequently-used-terraform-commands-with-explanation)
 * [Reference Links](https://github.com/janjiralakirankumar/TerraformEssentials#reference-links)
 
-To begin with Lab-1, Login to AWS Console.
 ## Lab-1: Creating an EC2 Instance in AWS and Installing Terraform
+
+To begin with Lab-1, Login to AWS Console.
 
 #### Task-1: Installing Terraform on Ubuntu 20.04 operating system
 
