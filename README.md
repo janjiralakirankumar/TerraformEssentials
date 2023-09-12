@@ -19,7 +19,7 @@
 To begin with Lab-1, Login to AWS Console.
 ## Lab-1: Creating an EC2 Instance in AWS and Installing Terraform
 
-#### Task 1: Installing Terraform on Ubuntu 20.04 operating system
+#### Task-1: Installing Terraform on Ubuntu 20.04 operating system
 
 * Launch a **t2.micro** instance with OS version as **Ubuntu 20.04** in North Virginia (us-east-1) Region.
 * Use tag "**Name:Terraform-Server**"
@@ -55,7 +55,7 @@ terraform
 terraform -v
 ```
 
-#### Task 2: Install Required Packages and login to Ubuntu server using Credentials. 
+#### Task-2: Install Required Packages and login to Ubuntu server using Credentials. 
 ```
 sudo apt-get install python3-pip -y
 ```
@@ -70,6 +70,7 @@ aws configure
 | **Access Key ID.** | **Secret Access Key ID.** |
 | ------------------ | ------------------------- |
 | AKIAIOSFODNN7EXAMPLE | wJalrXUtnFEMI/K7MDENG/bPxRfiCYEXAMPLEKEY |
+
 ##### Note: If not available generate Credentials from AWS IAM Service
 Once LoggedIn check the account access
 ```
@@ -79,7 +80,7 @@ Or Use below command to check whether it is authenticated.
 ```
 aws iam list-users
 ```
-#### Task-2.1: Now we are ready to perform the labs
+#### Task-3: Now we are ready to perform the labs
 Create directory as Lab1 & create local file
 ```
 mkdir Lab1 && cd Lab1
@@ -106,7 +107,7 @@ terraform apply
 ```
 terraform destroy
 ```
-#### Task 3: Launching your first AWS EC2 instance using Terraform 
+#### Task-4: Launching your first AWS EC2 instance using Terraform 
 ```
 cd ~
 mkdir terraform-labs && cd terraform-labs/
@@ -190,7 +191,7 @@ terraform destroy
 ## Lab 2: AWS EC2 instance creation using Terraform Variables
 
 
-#### Task 1: Create EC2 instance using variables 
+#### Task-1: Create EC2 instance using variables 
 ```
 cd /home/ubuntu/terraform-labs/
 ```
@@ -265,7 +266,7 @@ terraform destroy -auto-approve
 terraform apply -var-file=<var file name>
 ```
 
-#### Task 2: Implementing map variables that dynamically fetch AMI based on the Linux distro selected
+#### Task-2: Implementing map variables that dynamically fetch AMI based on the Linux distro selected
 ```
 vi instance.tf
 ```
@@ -322,9 +323,9 @@ Use the "terraform destroy" command for cleaning the infrastructure used in this
 ```
 terraform destroy
 ```
-## Lab 3 : Using Output Feature 
+## Lab-3 : Using Output Feature 
 
-#### Task 1: Using output feature of Terraform to get the IP Address of EC2 Instance
+#### Task-1: Using output feature of Terraform to get the IP Address of EC2 Instance
 ```
 cd /home/ubuntu/
 ```
@@ -382,9 +383,9 @@ cd ..
 ```
 rm -rf output-variable-lab
 ```
-## Lab 4 : Remote State using Amazon Simple Storage Service 
+## Lab-4 : Remote State using Amazon Simple Storage Service 
 
-#### Task 1: Create a S3 Bucket using AWS Console 
+#### Task-1: Create a S3 Bucket using AWS Console 
 
 * Create a new S3 bucket in "**us-east-2**" Region by name: "**yourname-terraform**".
 * Select "**ACLs enabled**".
@@ -395,7 +396,7 @@ To cross Check whether the Bucket is created or not, run the below command in CL
 ```
 aws s3 ls 
 ```
-#### Task 2: Configure Remote State
+#### Task-2: Configure Remote State
 ```
 cd /home/ubuntu/terraform-labs/
 ```
@@ -477,9 +478,9 @@ rm -rf remote-state-lab
 ```
 Empty the Bucket and then Delete the Bucket.
 
-## Lab 5: Launching VPC and EC2 Instance 
+## Lab-5: Launching VPC and EC2 Instance 
 
-#### Task 1: Launching VPC and creating subnets
+#### Task-1: Launching VPC and creating subnets
 ```
 cd /home/ubuntu/
 ```
@@ -514,7 +515,7 @@ terraform plan
 ```
 terraform apply -auto-approve
 ```
-#### Task 2: Launching an EC2 Instance 
+#### Task-2: Launching an EC2 Instance 
 
 Create a new File for EC2 Instance
 ```
@@ -628,7 +629,7 @@ ssh -i mykey -l ubuntu <Your Public IP>
 ```
 exit
 
-#### Task 3: Connecting an EBS with EC2 Instance 
+#### Task-3: Connecting an EBS with EC2 Instance 
 ```
 vi instance.tf 
 ```
@@ -685,7 +686,7 @@ rm -rf lab_10_vpc
 ```
 ## Lab-6: Launching Auto-Scaling services
 
-#### Task 1: Create ASG
+#### Task-1: Create ASG
 ```
 cd /home/ubuntu/
 ```
@@ -722,7 +723,7 @@ terraform plan
 ```
 terraform apply 
 ```
-#### Task 2: Increase CPU utilization in your new ec2 instance.
+#### Task-2: Increase CPU utilization in your new ec2 instance.
 ```
 ssh -i mykey -l ubuntu <Public IP> 
 ```
@@ -921,7 +922,7 @@ Destroy the resources once done.
 ```
 terraform destroy
 ```
-## Lab 9: Creating AWS resources using terraform modules
+## Lab-9: Creating AWS resources using terraform modules
 ```
 cd /home/ubuntu/
 ```
