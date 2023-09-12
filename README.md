@@ -508,7 +508,7 @@ terraform init
 ```
 terraform plan
 ```
-**Note:** If it is throwing any Error then either Comment it or Remove the line.
+**Note:** If it is throwing any Error then either **Comment** it by Adding # in the begining of line or **Remove** the line.
 
 (**Example Error:** on vpc.tf line 12, in resource "aws_vpc" "main": 12:   enable_classiclink   = "false")
 ```
