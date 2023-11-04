@@ -52,6 +52,9 @@ ls
 sudo mv terraform /usr/local/bin
 ```
 ```
+rm terraform_1.6.3_linux_amd64.zip
+```
+```
 ls
 terraform
 ```
@@ -386,6 +389,25 @@ cat output.tf
 ```
 cat vars.tf
 ```
+In vars.tf file delete all the lines and add the below code (Updated with Regions AMI IDs). Also, ensure to replace your region and add your region's ami as well.
+```
+vi vars.tf
+```
+```
+variable "AWS_REGION" {
+  default = "us-east-1"
+}
+
+variable "AMIS" {
+  type = map(string)
+  default = {
+    us-east-2 = "ami-089c26792dcb1fbd4"
+    us-west-2 = "ami-00448a337adc93c05"
+    eu-west-1 = "ami-0e309a5f3a6dd97ea"
+  }
+}
+```
+Once replaced, save the changes.
 ```
 terraform init
 ```
@@ -411,15 +433,19 @@ terraform output Public_ip
 ```
 terraform output Private_ip
 ```
-Use the "terraform destroy" command for cleaning the infrastructure used in this lab, remove the directory using rm -rf
+Use the "terraform destroy" command for cleaning the infrastructure used in this lab.
 ```
 terraform destroy
 ```
 ```
 cd ..
 ```
+Once done, remove the directory using the `rm -rf` command below.
 ```
 rm -rf output-variable-lab
+```
+```
+rm -rf output-variable-lab-v0.13.5.tar.gz
 ```
 #### =============================END of LAB-03=============================
 
