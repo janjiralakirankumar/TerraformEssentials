@@ -22,14 +22,17 @@ To begin with Lab-1, Login to AWS Console.
 
 #### Task-1: Installing Terraform on Ubuntu 20.04 operating system
 
-* Manually Launch a **t2.micro** instance with OS version as **Ubuntu 20.04** in North Virginia (us-east-1) Region.
+* Manually Launch a **t2.micro** instance with OS version as **Ubuntu 22.04 LTS** in North Virginia (us-east-1) Region.
 * Use tag "**Name:Terraform-Server**"
-* In security groups, include ports **22** and **80**. 
-* login with username as "**ubuntu**".
+* Create a new Keypair with Name "Terraform-Keypair-YourName"
+* In security groups, include ports **22 (SSH)** and **80 (HTTP)**.
+* Configure Storage: 10 GiB
+* Launch the Instance.
+* Once Launched, Connect to the Instance using MobaXterm or Putty with username as "**ubuntu**".
 
 Once the EC2 is ready, follow the below Commands:
 ```
-sudo hostnamectl set-hostname terraform
+sudo hostnamectl set-hostname TerraformServer
 bash
 ```
 ```
@@ -39,10 +42,10 @@ sudo apt update
 sudo apt install wget unzip -y
 ```
 ```
-wget https://releases.hashicorp.com/terraform/1.5.7/terraform_1.5.7_linux_amd64.zip
+wget https://releases.hashicorp.com/terraform/1.6.3/terraform_1.6.3_linux_amd64.zip
 ```
 ```
-unzip terraform_1.5.7_linux_amd64.zip
+unzip terraform_1.6.3_linux_amd64.zip
 ```
 ```
 ls
@@ -105,18 +108,35 @@ terraform plan
 ```
 terraform apply
 ```
+To check whether the file is created follow the command
+
+```
+cd /home/ubuntu
+ls
+```
+```
+cat test.txt
+```
+Once Verified, you can destroy the File by changing to the Lab1 Directory
+```
+cd Lab1
+```
 ```
 terraform destroy
 ```
 #### Task-4: Launching your first AWS EC2 instance using Terraform 
 ```
 cd ~
-mkdir terraform-labs && cd terraform-labs/
+mkdir EC2-lab && cd EC2-lab/
 ```
 ```
 vi example.tf
 ```
-Add the given lines, by pressing "INSERT" 
+Add the given lines, by pressing "INSERT"
+
+Note: 
+1. Replace your allocated Region and AMI ID of the same Region.
+2. "Yourname-EC2-1" with your name.
 ```
 provider "aws" {
   profile = "default" # This line is not mandatory.
@@ -127,7 +147,7 @@ resource "aws_instance" "example" {
   ami           = "ami-07efac79022b86107"
   instance_type = "t2.micro"
   tags = {
-    Name = "Yourname-TF-1"
+    Name = "Yourname-EC2-1"
   }
 }
 ```
@@ -148,17 +168,20 @@ terraform plan
 terraform apply
 ```
 ```
-ls
+ls #List the files
+```
+To see what is saved in `terraform.tfstate` use the below command.
+
+```
 cat terraform.tfstate
 ```
-Now, Replace the AMI id to **Amazon Linux AMI 2023** by Copy pasting from below.
-```
-ami-02a89066c48741345
-```
+Now, Let's Replace the AMI ID with **Amazon Linux AMI 2023** from the same region and see what happens.
+
+**Note:** To get the **Amazon Linux AMI 2023** go to EC2 Instances, click on Launch and under the **Amazon Linux AMI 2023** copy it and paste in File.
 ```
 vi example.tf
 ```
-Add the given lines, by pressing "INSERT" 
+Replace the AMI ID, by pressing "INSERT"  
 ```
 provider "aws" {
   profile = "default"
@@ -175,12 +198,16 @@ resource "aws_instance" "example" {
 ```
 
 Save the file using "ESCAPE + :wq!"
+
+Now in Terraform Plan Verify the Changes.
 ```
 terraform plan
 ```
 ```
 terraform apply
 ```
+Once Applied then go to the console and see that the Previous EC2 is being destroyed and new EC2 is getting created.
+    - Also verify that the OS is **Amazon Linux AMI 2023**
 ```
 cat terraform.tfstate
 ```
@@ -188,6 +215,7 @@ Use the "terraform destroy" command for cleaning the infrastructure used in this
 ```
 terraform destroy
 ```
+#### =============================END of LAB-01=============================
 
 ## Lab 2: AWS EC2 instance creation using Terraform Variables
 
@@ -324,6 +352,8 @@ Use the "terraform destroy" command for cleaning the infrastructure used in this
 ```
 terraform destroy
 ```
+#### =============================END of LAB-02=============================
+
 ## Lab-3 : Using Output Feature 
 
 #### Task-1: Using output feature of Terraform to get the IP Address of EC2 Instance
@@ -384,6 +414,8 @@ cd ..
 ```
 rm -rf output-variable-lab
 ```
+#### =============================END of LAB-03=============================
+
 ## Lab-4 : Remote State using Amazon Simple Storage Service 
 
 #### Task-1: Create a S3 Bucket using AWS Console 
@@ -478,6 +510,8 @@ cd ..
 rm -rf remote-state-lab
 ```
 Empty the Bucket and then Delete the Bucket.
+
+#### =============================END of LAB-04=============================
 
 ## Lab-5: Launching VPC and EC2 Instance 
 
@@ -685,6 +719,8 @@ terraform destroy -auto-approve
 cd ..
 rm -rf lab_10_vpc
 ```
+#### =============================END of LAB-05=============================
+
 ## Lab-6: Launching Auto-Scaling services
 
 #### Task-1: Create ASG
@@ -745,6 +781,7 @@ Once done **Exit** from EC2 Instance
 ```
 terraform destroy
 ```
+#### =============================END of LAB-06=============================
 
 ## Lab-7: Creating a MySQL Database with RDS 
 ```
@@ -872,6 +909,8 @@ drop table customers;
 ```
 terraform destroy
 ```
+#### =============================END of LAB-07=============================
+
 ## Lab-8: Creating IAM Users, Groups using Terraform.
 ```
 cd /home/ubuntu
@@ -923,6 +962,8 @@ Destroy the resources once done.
 ```
 terraform destroy
 ```
+#### =============================END of LAB-08=============================
+
 ## Lab-9: Creating AWS resources using terraform modules
 ```
 cd /home/ubuntu/
@@ -994,6 +1035,7 @@ Once the resources are created. Then, verify all the resources and then destroy 
 ```
 terraform destroy
 ```
+#### =============================END of LAB-09=============================
 -----------------------------------------------------------------------------------------------------------------------------
 ## Frequently used Terraform Commands with Explanation
 1. terraform version
