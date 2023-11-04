@@ -389,7 +389,7 @@ cat output.tf
 ```
 cat vars.tf
 ```
-In vars.tf file delete all the lines and add the below code (Updated with Regions AMI IDs). Also, ensure to replace your region and add your region's ami as well.
+In vars.tf file delete all the lines and add the below code (Updated with Regions AMI IDs). Also, ensure to replace your `region` and add your `region's ami` in the list as well.
 ```
 vi vars.tf
 ```
@@ -440,7 +440,7 @@ terraform destroy
 ```
 cd ..
 ```
-Once done, remove the directory using the `rm -rf` command below.
+Once done, remove the directory and Zip file using the `rm -rf` command below.
 ```
 rm -rf output-variable-lab
 ```
@@ -453,18 +453,19 @@ rm -rf output-variable-lab-v0.13.5.tar.gz
 
 ### Task-1: Create a S3 Bucket using AWS Console 
 
-* Create a new S3 bucket in "**us-east-2**" Region by name: "**yourname-terraform**".
-* Select "**ACLs enabled**".
-* Uncheck "**block public access**" and select "**I acknowledge that the current settings might result in this bucket and the objects within becoming public**".
-* "**Enable versioning**".
-
-To cross Check whether the Bucket is created or not, run the below command in CLI.
+* Create a new S3 bucket in your Allocated Region by name: "**youryame-terraform**".
+* While creating,
+    - Select "**ACLs enabled**".
+    - Uncheck "**block public access**" and select "**I acknowledge that the current settings might result in this bucket and the objects within becoming public**".
+    - "**Enable versioning**".
+    - Then, click on `Create bucket`
+* Once done, To cross-check whether the Bucket is created or not, run the below command in CLI.
 ```
 aws s3 ls 
 ```
 ### Task-2: Configure Remote State
 ```
-cd /home/ubuntu/terraform-labs/
+cd /home/ubuntu/EC2-lab/
 ```
 ```
 wget https://s3.ap-south-1.amazonaws.com/files.cloudthat.training/devops/terraform-essentials/remote_state_lab.tar.gz
@@ -484,18 +485,24 @@ cat instance.tf
 ```
 cat vars.tf
 ```
+In `vars.tf` file ensure to replace your `region` and add your `region's ami` in the list as well.
+```
+vi vars.tf
+```
+Once done, save the file and follow further steps.
 ```
 cat provider.tf
 ```
-Create a File for storing "**terraform.tfstate**" file in backend. ie.. **Amazon S3.** 
+Now, Create a New Configuration File for storing "**terraform.tfstate**" file in the backend. (ie. **Amazon S3.**)
 
 ```
 vi backend.tf
 ```
-Add the given lines, by pressing "INSERT" 
+Add the given lines, by pressing "INSERT" and add your `bucket's region` and `Bucket Name`
 ```
 terraform {
   backend "s3" {
+    region = "<Replace your s3 bucket region>"
     bucket = "<Replace your s3 bucket name>"
     key    = "terraform/remotestate"
   }
@@ -507,10 +514,6 @@ cat backend.tf
 ```
 ```
 terraform init
-```
-When it prompts for Region confirmation, enter the same Region in which bucket is created.
-```
-us-east-2
 ```
 ```
 terraform fmt
@@ -524,10 +527,10 @@ terraform plan
 ```
 terraform apply
 ```
-* Go to the S3 bucket and open **terraform** > **remotestate** > In Properties Copy the **Object URL** and paste it in Browser.
+* Go to the S3 bucket and click on **terraform** > **remotestate** > In Properties Copy the **Object URL** and paste it in Browser.
   (By default it shows Access Denied)
-* To view, Click on permission and click on **Edit** under **Access control list (ACL)** > **Everyone (public access)** > Check "Read" then check **I understand the effects of these changes on this object** and then Click on Save changes
-* Copy the **object URL** and paste it into the web browser (If already done, just Refresh the page).
+* To view the content of the file, in S3 Bucet tab, Click on permission and click on **Edit** under **Access control list (ACL)** > **Everyone (public access)** > Check **"Read"** then check **I understand the effects of these changes on this object** and then Click on **Save changes**
+* Refresh the Object URL Page (or again Copy-paste the **object URL** into the web browser).
 * Now, You should be able to access the state file and View the resources.
   (It shows the attributes of a single resource in the Terraform state of **aws_instance.terraform-remoteState**.)
 
@@ -538,11 +541,15 @@ terraform destroy
 ```
 cd ..
 ```
-* remove the directory using "**rm -rf**"
+* Once done, Remove the directory and Zip file using "**rm -rf**"
 ```
 rm -rf remote-state-lab
 ```
-Empty the Bucket and then Delete the Bucket.
+```
+rm -rf remote_state_lab.tar.gz
+```
+
+**Note:** Also Ensure to delete the bucket. (To delete first empty the Bucket and then Delete it.)
 
 #### =============================END of LAB-04=============================
 
