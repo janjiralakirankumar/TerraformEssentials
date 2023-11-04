@@ -320,7 +320,7 @@ vi vars.tf
 ```
 Delete all existing lines and Add the given lines, by pressing "INSERT" Also ensure to replace your `Region,` `AMi IDs` of the same region for `redhat,` `ubuntu` and `amazon`
 
-**Note:** To delete all the lines at a lime use `Esc+gg+dG`
+**Note:** To delete all the lines at a time use `Esc+gg+dG`
 ```
 variable "AWS_ACCESS_KEY"{}
 variable "AWS_SECRET_KEY"{}
