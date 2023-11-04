@@ -22,7 +22,7 @@ To begin with Lab-1, Login to AWS Console.
 
 #### Task-1: Installing Terraform on Ubuntu 20.04 operating system
 
-* Launch a **t2.micro** instance with OS version as **Ubuntu 20.04** in North Virginia (us-east-1) Region.
+* Manually Launch a **t2.micro** instance with OS version as **Ubuntu 20.04** in North Virginia (us-east-1) Region.
 * Use tag "**Name:Terraform-Server**"
 * In security groups, include ports **22** and **80**. 
 * login with username as "**ubuntu**".
