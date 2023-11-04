@@ -300,21 +300,27 @@ terraform apply -var-file=<var file name>
 ```
 vi instance.tf
 ```
-Delete the existing lines and Add the given lines, by pressing "INSERT" 
+Delete the existing lines and Add the given lines, by pressing "INSERT" and replacing **YourName**
+
+**Note:** To delete all the lines at a time use the commands `Esc+gg+dG` and once cleared then add the new lines.
 ```
 resource "aws_instance" "terraform_example"{
   ami = var.AMIS[var.Linux_distro]
   instance_type="t2.micro"
   tags = {
-    Name = "yourname-lab8B-task2"
+    Name = "YourName-Lab2-Task2"
   }
 }
 ```
 Save the file using "ESCAPE + :wq!"
+
+Now, Also make changes in the Vars.tf file.
 ```
 vi vars.tf
 ```
-Delete the existing lines and Add the given lines, by pressing "INSERT" 
+Delete all existing lines and Add the given lines, by pressing "INSERT" Also ensure to replace your `Region,` `AMi IDs` of the same region for `redhat,` `ubuntu` and `amazon`
+
+**Note:** To delete all the lines at a lime use `Esc+gg+dG`
 ```
 variable "AWS_ACCESS_KEY"{}
 variable "AWS_SECRET_KEY"{}
