@@ -549,7 +549,7 @@ rm -rf remote-state-lab
 rm -rf remote_state_lab.tar.gz
 ```
 
-**Note:** Also Ensure to delete the bucket. (To delete first empty the Bucket and then Delete it.)
+**Note:** Also Ensure to delete the bucket. (To delete, first empty the Bucket and then Delete it.)
 
 #### =============================END of LAB-04=============================
 
