@@ -1011,7 +1011,7 @@ Create a new **iam.tf** file to define your IAM resources.
 ```
 vi iam.tf
 ```
-Copy and paste the below Code to create uers and group.
+Copy and paste the below Code to create users and group also replace your `region`
 ```
 provider "aws" {
   region = "us-east-1"
@@ -1050,6 +1050,10 @@ terraform apply
 Destroy the resources once done.
 ```
 terraform destroy
+```
+Once destroyed, remove the Directory.
+```
+rm -rf iam-users
 ```
 #### =============================END of LAB-08=============================
 
@@ -1092,9 +1096,9 @@ vi variables.tf
 ```
 **Note:**
 
-Replace the **VPC ID** & **Subnet ID** from **ca-central-1** region in **variable.tf** file.
-* **Change vpc_id** to any VPC in ca-central-1 (Ex: vpc-0e608033e14b01c3c)
-* **Change subnet id** - use available subnets from AZ **a or b**. (Ex: subnet-086dd80df2e64b56b)
+Replace the Default **VPC ID** & **Subnet ID** and **AMI Id** from your Allocated region in **variable.tf** file.
+* **Change vpc_id** to any VPC in your region (Ex: vpc-0e608033e14b01c3c)
+* **Change subnet id** Use any available subnets from AZ **a or b**. (Ex: subnet-086dd80df2e64b56b)
 
 Save it
 
