@@ -2,7 +2,7 @@
 ### Terraform Labs Pre-requisites
 1. Basic understanding of Linux Commands.
 2. Basic knowledge of a Cloud platform such as AWS.
-3. Good to have AWS-Free Tier Account for Practice.
+3. Good to have an AWS-Free Tier Account for Practice.
 ## Table Of Contents
 * [Lab-1: Creating an EC2 Instance in AWS and Installing Terraform](https://github.com/janjiralakirankumar/TerraformEssentials#lab-1-creating-an-ec2-instance-in-aws-and-installing-terraform)
 * [Lab-2: AWS EC2 instance creation using Terraform Variables](https://github.com/janjiralakirankumar/TerraformEssentials#lab-2-aws-ec2-instance-creation-using-terraform-variables)
@@ -18,13 +18,13 @@
 
 ## Lab-1: Creating an EC2 Instance in AWS and Installing Terraform
 
-To begin with Lab-1, Login to AWS Console.
+To begin with Lab-1, Login into AWS Console.
 
 ### Task-1: Installing Terraform on Ubuntu 20.04 operating system
 
 * Manually Launch a **t2.micro** instance with OS version as **Ubuntu 22.04 LTS** in North Virginia (us-east-1) Region.
 * Use tag "**Name:Terraform-Server**"
-* Create a new Keypair with Name "Terraform-Keypair-YourName"
+* Create a new Keypair with the Name "Terraform-Keypair-YourName"
 * In security groups, include ports **22 (SSH)** and **80 (HTTP)**.
 * Configure Storage: 10 GiB
 * Launch the Instance.
@@ -534,7 +534,7 @@ terraform apply
 * Now, You should be able to access the state file and View the resources.
   (It shows the attributes of a single resource in the Terraform state of **aws_instance.terraform-remoteState**.)
 
-Use the "terraform destroy" command for cleaning the infrastructure used in this lab, 
+Use the "terraform destroy" command to clean the infrastructure used in this lab, 
 ```
 terraform destroy
 ```
@@ -569,14 +569,18 @@ tar -xvf lab_10_vpc_v0.13.tar.gz
 cd lab_10_vpc/
 ls
 ```
+Now, Open the files one by one and replace the regions (ap-south-1) and Availability Zones (ap-south-1a)
+
+In `vpc.tf` file Add `#` in front of `line 12, ie... enable_classiclink = "false"` and replace your `AZs`
 ```
-cat vpc.tf
+vi vpc.tf
 ```
 ```
 cat nat.tf
 ```
+In `vars.tf` file Update your Region.
 ```
-cat vars.tf
+vi vars.tf
 ```
 ```
 terraform init
@@ -584,9 +588,6 @@ terraform init
 ```
 terraform plan
 ```
-**Note:** If it is throwing any Error then either **Comment** it by Adding # in the begining of line or **Remove** the line.
-
-(**Example Error:** on vpc.tf line 12, in resource "aws_vpc" "main": 12:   enable_classiclink   = "false")
 ```
 terraform apply -auto-approve
 ```
@@ -596,7 +597,7 @@ Create a new File for EC2 Instance
 ```
 vi instance.tf 
 ```
-Add the given lines, by pressing "INSERT" 
+Add the given lines, by pressing "INSERT" and replace `Yourname-Lab11-ec2` with your name.
 ```
 resource "aws_instance" "example" {
   ami           = var.AMIS[var.AWS_REGION]
@@ -608,7 +609,7 @@ resource "aws_instance" "example" {
   # the public SSH key
   key_name = aws_key_pair.mykeypair.key_name
   tags = {
-    Name = "Yourname-Lab11-ec2"
+    Name = "Yourname-Lab5-ec2"
   }
 }
 ```
@@ -618,7 +619,7 @@ Also, Create a new File for EC2 SecurityGroup
 ```
 vi securitygroup.tf
 ```
-Add the given lines, by pressing "INSERT" 
+Add the given lines, by pressing "INSERT" and replacing your name at `YourName-allow-ssh`
 ```
 resource "aws_security_group" "allow-ssh" {
   vpc_id      = aws_vpc.main.id
@@ -637,7 +638,7 @@ resource "aws_security_group" "allow-ssh" {
     cidr_blocks = ["0.0.0.0/0"]
   }
   tags = {
-    Name = "yourname-allow-ssh"
+    Name = "YourName-allow-ssh"
   }
 }
 ```
@@ -651,10 +652,10 @@ ls
 ```
 vi key.tf
 ```
-Add the given lines, by pressing "INSERT" 
+Add the given lines, by pressing "INSERT" and replace with your name.
 ```
 resource "aws_key_pair" "mykeypair" {
-  key_name   = "yourname-keypair"
+  key_name   = "YourName-KeyPair"
   public_key = file(var.PATH_TO_PUBLIC_KEY)
 }
 ```
@@ -662,7 +663,7 @@ Save the file using "ESCAPE + :wq!"
 ```
 vi vars.tf
 ```
-Add the given lines, by pressing "INSERT" 
+Add the given lines, by pressing "INSERT" and replace your region and add your Region's AMI Details to list.
 ##### First 3 lines are already present. you can add the remaining lines.
 ```
 variable "AWS_REGION" {
@@ -709,7 +710,7 @@ exit
 vi instance.tf 
 ```
 Add the given lines, by pressing "INSERT" 
-First block will be already present in the file
+First block will be already present in the file. But, replace the entire code and update your `AvailabilityZone,` `YourName` in `Instance` and `EBS Volume`
 ```
 resource "aws_instance" "example" {
   ami = var.AMIS[var.AWS_REGION]
@@ -721,7 +722,7 @@ resource "aws_instance" "example" {
   # the public SSH key
   key_name = aws_key_pair.mykeypair.key_name
   tags = {
-    Name = "yourname-Lab11-EC2"
+    Name = "YourName-Lab5-EC2"
   }
 }
 
@@ -744,20 +745,20 @@ Save the file using "ESCAPE + :wq!"
 ```
 terraform apply
 ```
-* Go to EC2 dashboard and select the EC2 Instance. 
-* Then select storage and see that the new volume is attached
-```
-ssh -i mykey ubuntu@<PUBLIC IP>
-```
-exit
+* Go to `EC2 dashboard` and select the `EC2 Instance.` 
+* Then select `storage` and see that the new volume is attached.
 
-Use the "terraform destroy" command for cleaning the infrastructure used in this lab, remove the directory using rm -rf
+Once Done, Use the `terraform destroy` command to clean the infrastructure used in this lab, remove the directory using rm -rf
 ```
 terraform destroy -auto-approve
 ```
+Note: Ensure to crosscheck in the Management Console whether all the resources are destroyed or not or else it will charge you. 
 ```
 cd ..
 rm -rf lab_10_vpc
+```
+```
+rm -rf lab_10_vpc_v0.13.tar.gz
 ```
 #### =============================END of LAB-05=============================
 
@@ -775,18 +776,22 @@ tar -zxvf lab_14_autoscaling.tar.gz
 ```
 ```
 cd lab_14_autoscaling/
-```
-```
 ls
 ```
 ```
-vi autoscaling.tf
+cat autoscaling.tf
 ```
-Update the names/tags to include your name
 ```
-vi autoscalingpolicy.tf
+cat autoscalingpolicy.tf
 ```
-Update the names/tags to include your name
+In `vpc.tf` file Add `#` in front of `line 7, ie... enable_classiclink = "false"` and replace your `AZs` for 3 public and 3 Private Subnets.
+```
+vi vpc.tf
+```
+In `vars.tf` file replace your region and your region's AMI ID in the list.
+```
+vi vars.tf
+```
 ```
 ssh-keygen -f mykey
 ls
@@ -800,7 +805,17 @@ terraform plan
 ```
 terraform apply 
 ```
+Now, Check In the Console that the resources are created 
+
+  1. EC2 dashboard >> Auto Scaling Groups >> example-autoscaling
+  2. Amazon Cloud Watch >> Alarms.
+  3. VPC >> Subnets, RT, etc..
+
+
 ### Task-2: Increase CPU utilization in your new ec2 instance.
+
+Now, let's connect with the EC2 created by ASG.
+
 ```
 ssh -i mykey -l ubuntu <Public IP> 
 ```
@@ -813,9 +828,9 @@ sudo apt-get install stress
 ```
 stress --cpu 3 -v --timeout 300
 ```
-* Now go back to AWS console > Services > EC2 > Instances and select your instance > Description and click on Monitoring. Now you see High CPU utilization (Or)
-* Go to AWS console > Services > CloudWatch > Alarms and view alarm
-* To check whether the new Instance is added, Go to AWS console > Services > EC2 > Instances. You can see that one more instance is created with the same name.  
+* Now go back to AWS console > EC2 Dashboard > Instances then select the instance Created by ASG > Description and click on Monitoring. Now you see High CPU utilization (Or)
+* Go to AWS console > CloudWatch > Alarms and view the alarm and observe the CPU Utilization.
+* To check whether the new Instance is added, Go to AWS console > EC2 > Instances. You can see that one more instance is created with the same name because of the high CPU.  
 
 Once done **Exit** from EC2 Instance
 ```
