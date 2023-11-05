@@ -1139,6 +1139,14 @@ Once the resources are created. Then, verify all the resources and then destroy 
 ```
 terraform destroy
 ```
+Once Destroyed, remove the Directory and Zip FIle.
+```
+cd ~
+rm -rf terraform-modules
+```
+```
+rm -rf terraform-modules.tar.gz
+```
 #### =========================END of LAB-09=========================
 -----------------------------------------------------------------------------------------------------------------------------
 ## Frequently used Terraform Commands with Explanation
