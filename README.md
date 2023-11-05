@@ -4,17 +4,17 @@
 2. Basic knowledge of a Cloud platform such as AWS.
 3. Good to have an AWS-Free Tier Account for Practice.
 ## Table Of Contents
-* [Lab-1: Creating an EC2 Instance in AWS and Installing Terraform](https://github.com/janjiralakirankumar/TerraformEssentials#lab-1-creating-an-ec2-instance-in-aws-and-installing-terraform)
-* [Lab-2: AWS EC2 instance creation using Terraform Variables](https://github.com/janjiralakirankumar/TerraformEssentials#lab-2-aws-ec2-instance-creation-using-terraform-variables)
-* [Lab-3 : Using Output Feature](https://github.com/janjiralakirankumar/TerraformEssentials#lab-3--using-output-feature)
-* [Lab-4 : Remote State using Amazon Simple Storage Service](https://github.com/janjiralakirankumar/TerraformEssentials#lab-4--remote-state-using-amazon-simple-storage-service)
-* [Lab-5: Launching VPC and EC2 Instance](https://github.com/janjiralakirankumar/TerraformEssentials#lab-5-launching-vpc-and-ec2-instance)
-* [Lab-6: Launching Auto-Scaling services](https://github.com/janjiralakirankumar/TerraformEssentials#lab-6-launching-auto-scaling-services)
-* [Lab-7: Creating a MySQL Database with RDS](https://github.com/janjiralakirankumar/TerraformEssentials#lab-7-creating-a-mysql-database-with-rds)
-* [Lab-8: Creating IAM Users, Groups using Terraform.](https://github.com/janjiralakirankumar/TerraformEssentials#lab-8-creating-iam-users-groups-using-terraform)
-* [Lab-9: Creating AWS resources using terraform modules](https://github.com/janjiralakirankumar/TerraformEssentials#lab-9-creating-aws-resources-using-terraform-modules)
-* [Frequently used Terraform Commands with Explanation](https://github.com/janjiralakirankumar/TerraformEssentials#frequently-used-terraform-commands-with-explanation)
-* [Reference Links](https://github.com/janjiralakirankumar/TerraformEssentials#reference-links)
+* [Lab-1: Creating an EC2 Instance in AWS and Installing Terraform](https://github.com/janjiralakirankumar/TerraformEssentials/tree/main#lab-1-creating-an-ec2-instance-in-aws-and-installing-terraform)
+* [Lab-2: AWS EC2 instance creation using Terraform Variables](https://github.com/janjiralakirankumar/TerraformEssentials/tree/main#lab-2-aws-ec2-instance-creation-using-terraform-variables)
+* [Lab-3 : Using Output Feature](https://github.com/janjiralakirankumar/TerraformEssentials/tree/main#lab-3--using-output-feature)
+* [Lab-4 : Remote State using Amazon Simple Storage Service](https://github.com/janjiralakirankumar/TerraformEssentials/tree/main#lab-4--remote-state-using-amazon-simple-storage-service)
+* [Lab-5: Launching VPC and EC2 Instance](https://github.com/janjiralakirankumar/TerraformEssentials/tree/main#lab-5-launching-vpc-and-ec2-instance)
+* [Lab-6: Launching Auto-Scaling services](https://github.com/janjiralakirankumar/TerraformEssentials/tree/main#lab-6-launching-auto-scaling-services)
+* [Lab-7: Creating a MySQL Database with RDS](https://github.com/janjiralakirankumar/TerraformEssentials/tree/main#lab-7-creating-a-mysql-database-with-rds)
+* [Lab-8: Creating IAM Users, Groups using Terraform.](https://github.com/janjiralakirankumar/TerraformEssentials/tree/main#lab-8-creating-iam-users-groups-using-terraform)
+* [Lab-9: Creating AWS resources using terraform modules](https://github.com/janjiralakirankumar/TerraformEssentials/tree/main#lab-9-creating-aws-resources-using-terraform-modules)
+* [Frequently used Terraform Commands with Explanation](https://github.com/janjiralakirankumar/TerraformEssentials/tree/main#frequently-used-terraform-commands-with-explanation)
+* [Reference Links](https://github.com/janjiralakirankumar/TerraformEssentials/tree/main#reference-links)
 
 ## Lab-1: Creating an EC2 Instance in AWS and Installing Terraform
 
