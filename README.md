@@ -142,9 +142,9 @@ vi example.tf
 ```
 Add the given lines, by pressing "INSERT"
 
-Note: 
-1. Replace your allocated Region and AMI ID of the same Region.
-2. "Yourname-EC2-1" with your name.
+##### Note: 
+1. Replace your allocated `Region` and `AMI ID` of the same Region.
+2. `"Yourname-EC2-1"` with Your Name.
 ```
 provider "aws" {
   profile = "default" # This line is not mandatory.
@@ -176,7 +176,8 @@ terraform plan
 terraform apply
 ```
 ```
-ls #List the files
+#List the files
+ls 
 ```
 To see what is saved in `terraform.tfstate` use the below command.
 
@@ -185,7 +186,7 @@ cat terraform.tfstate
 ```
 Now, Let's Replace the AMI ID with `Amazon Linux AMI 2023` from the same region and see what happens.
 
-`Note:` To get the `Amazon Linux AMI 2023` go to EC2 Instances, click on Launch and under the `Amazon Linux AMI 2023` copy it and paste in File.
+`Note:` To get the `Amazon Linux AMI 2023` go to EC2 Instances, click on Launch, and select the `Amazon Linux AMI 2023` AMI and copy the ID and paste in File.
 ```
 vi example.tf
 ```
@@ -215,15 +216,20 @@ terraform plan
 terraform apply
 ```
 Once Applied then go to the console and see that the Previous EC2 is being destroyed and new EC2 is getting created.
-    - Also verify that the OS is `Amazon Linux AMI 2023`
+    
+Also verify that the OS is `Amazon Linux AMI 2023`
+
+Again when you cat the `terraform.tfstate` file it shows a new AMI ID.
 ```
 cat terraform.tfstate
 ```
-Use the "terraform destroy" command for cleaning the infrastructure used in this lab
+Use the `terraform destroy` command for cleaning the infrastructure used in this lab
 ```
 terraform destroy
 ```
-#### =============================END of LAB-01=============================
+Finally, verify that the resources are deleted in the Console.
+
+#### =========================END of LAB-01=========================
 
 ## Lab 2: AWS EC2 instance creation using Terraform Variables
 
@@ -371,7 +377,7 @@ Once Done remove the `EC2-lab` Directory.
 ```
 rm -rf EC2-lab
 ```
-#### =============================END of LAB-02=============================
+#### =========================END of LAB-02=========================
 
 ## Lab-3 : Using Output Feature 
 
@@ -456,7 +462,7 @@ rm -rf output-variable-lab
 ```
 rm -rf output-variable-lab-v0.13.5.tar.gz
 ```
-#### =============================END of LAB-03=============================
+#### =========================END of LAB-03=========================
 
 ## Lab-4 : Remote State using Amazon Simple Storage Service 
 
@@ -560,7 +566,7 @@ rm -rf remote_state_lab.tar.gz
 
 `Note:` Also Ensure to delete the bucket. (To delete, first empty the Bucket and then Delete it.)
 
-#### =============================END of LAB-04=============================
+#### =========================END of LAB-04=========================
 
 ## Lab-5: Launching VPC and EC2 Instance 
 
@@ -770,7 +776,7 @@ rm -rf lab_10_vpc
 ```
 rm -rf lab_10_vpc_v0.13.tar.gz
 ```
-#### =============================END of LAB-05=============================
+#### =========================END of LAB-05=========================
 
 ## Lab-6: Launching Auto-Scaling services
 
@@ -856,7 +862,7 @@ rm -rf lab_14_autoscaling
 ```
 rm -rf lab_14_autoscaling.tar.gz
 ```
-#### =============================END of LAB-06=============================
+#### =========================END of LAB-06=========================
 
 ## Lab-7: Creating a MySQL Database with RDS 
 ```
@@ -1003,7 +1009,7 @@ rm -rf lab_12_rds
 ```
 rm -rf lab_12_rds.tar.gz
 ```
-#### =============================END of LAB-07=============================
+#### =========================END of LAB-07=========================
 
 ## Lab-8: Creating IAM Users, Groups using Terraform.
 ```
@@ -1060,7 +1066,7 @@ Once destroyed, remove the Directory.
 ```
 rm -rf iam-users
 ```
-#### =============================END of LAB-08=============================
+#### =========================END of LAB-08=========================
 
 ## Lab-9: Creating AWS resources using terraform modules
 ```
@@ -1133,7 +1139,7 @@ Once the resources are created. Then, verify all the resources and then destroy 
 ```
 terraform destroy
 ```
-#### =============================END of LAB-09=============================
+#### =========================END of LAB-09=========================
 -----------------------------------------------------------------------------------------------------------------------------
 ## Frequently used Terraform Commands with Explanation
 1. terraform version
