@@ -128,6 +128,10 @@ cd Lab1
 ```
 terraform destroy
 ```
+```
+cd ~
+rm -rf Lab1
+```
 ### Task-4: Launching your first AWS EC2 instance using Terraform 
 ```
 cd ~
