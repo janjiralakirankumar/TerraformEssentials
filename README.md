@@ -120,7 +120,7 @@ ls
 ```
 cat test.txt
 ```
-Once Verified, you can destroy the File by changing to the Lab1 Directory
+Once Verified, you can destroy the File by changing it to the Lab1 Directory
 ```
 cd Lab1
 ```
@@ -361,6 +361,10 @@ terraform apply myplan
 Use the "terraform destroy" command for cleaning the infrastructure used in this lab
 ```
 terraform destroy
+```
+Once Done remove the `EC2-lab` Directory.
+```
+rm -rf EC2-lab
 ```
 #### =============================END of LAB-02=============================
 
@@ -664,6 +668,7 @@ Save the file using "ESCAPE + :wq!"
 vi vars.tf
 ```
 Add the given lines, by pressing "INSERT" and replace your region and add your Region's AMI Details to list.
+
 ##### First 3 lines are already present. you can add the remaining lines.
 ```
 variable "AWS_REGION" {
@@ -864,13 +869,21 @@ cd lab_12_rds
 ```
 ls
 ```
+In `rds.tf` file in line-24 comment the line by adding #.
 ```
-cat rds.tf
+vi rds.tf
 ```
 ```
 cat output.tf
 ```
-Change the tags to include your name. change the key pair name to include your name
+In `vpc.tf` file Add `#` in front of `line 7, ie... enable_classiclink = "false"` and replace your `AZs` for 3 public and 3 Private Subnets.
+```
+vi vpc.tf
+```
+In `vars.tf` file replace your `region` and add your `region's AMI ID` in the list.
+```
+vi vars.tf
+```
 ```
 ssh-keygen -f mykey
 ls
@@ -899,8 +912,9 @@ Get the endpoint from the AWS console. do not include the port number while ente
 ```
 mysql -u admin -h <endpoint> -p
 ```
-* use 'password' as the password.
-After LogingIn Use Commands for DataBases
+**Note:** When it prompts for the password enter `password`
+
+After LogingIn Use below Commands for DataBases
 ```
 show databases;
 ```
@@ -973,6 +987,16 @@ drop table customers;
 * **Exit** from the mysql **anchor EC2.**
 ```
 terraform destroy
+```
+Once destroyed, Delete the directory and zip file as well.
+```
+cd ..
+```
+```
+rm -rf lab_12_rds
+```
+```
+rm -rf lab_12_rds.tar.gz
 ```
 #### =============================END of LAB-07=============================
 
