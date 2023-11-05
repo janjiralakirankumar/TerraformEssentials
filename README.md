@@ -836,6 +836,16 @@ Once done **Exit** from EC2 Instance
 ```
 terraform destroy
 ```
+Once done, remove the Directory and Zip file.
+```
+cd ..
+```
+```
+rm -rf lab_14_autoscaling
+```
+```
+rm -rf lab_14_autoscaling.tar.gz
+```
 #### =============================END of LAB-06=============================
 
 ## Lab-7: Creating a MySQL Database with RDS 
