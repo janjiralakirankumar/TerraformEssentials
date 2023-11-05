@@ -18,19 +18,19 @@
 
 ## Lab-1: Creating an EC2 Instance in AWS and Installing Terraform
 
-To begin with Lab-1, Login into AWS Console.
+To begin with Lab-1, log in to AWS Console.
 
 ### Task-1: Installing Terraform on Ubuntu 20.04 operating system
 
-* Manually Launch a **t2.micro** instance with OS version as **Ubuntu 22.04 LTS** in North Virginia (us-east-1) Region.
-* Use tag "**Name:Terraform-Server**"
-* Create a new Keypair with the Name "Terraform-Keypair-YourName"
-* In security groups, include ports **22 (SSH)** and **80 (HTTP)**.
+* Manually Launch a `t2.micro` instance with OS version as `Ubuntu 22.04 LTS` in North Virginia (us-east-1) Region.
+* Use tag "`Name:Terraform-Server`"
+* Create a new Keypair with the Name `Terraform-Keypair-YourName`
+* In security groups, include ports `22 (SSH)` and `80 (HTTP)`.
 * Configure Storage: 10 GiB
 * Launch the Instance.
-* Once Launched, Connect to the Instance using MobaXterm or Putty with username as "**ubuntu**".
+* Once Launched, Connect to the Instance using `MobaXterm` or `Putty` with username "`ubuntu`".
 
-Once the EC2 is ready, follow the below Commands:
+Once the EC2 is ready, follow the below Commands to perform lab:
 ```
 sudo hostnamectl set-hostname TerraformServer
 bash
@@ -75,7 +75,7 @@ aws configure
 ```
 * When it prompts for Credentials, Enter the Keys as example shown below
   
-| **Access Key ID.** | **Secret Access Key ID.** |
+| `Access Key ID.` | `Secret Access Key ID.` |
 | ------------------ | ------------------------- |
 | AKIAIOSFODNN7EXAMPLE | wJalrXUtnFEMI/K7MDENG/bPxRfiCYEXAMPLEKEY |
 
@@ -84,7 +84,7 @@ Once LoggedIn check the account access
 ```
 aws s3 ls
 ```
-**Or** Use below command to check whether it is authenticated.
+`Or` Use below command to check whether it is authenticated.
 ```
 aws iam list-users
 ```
@@ -179,9 +179,9 @@ To see what is saved in `terraform.tfstate` use the below command.
 ```
 cat terraform.tfstate
 ```
-Now, Let's Replace the AMI ID with **Amazon Linux AMI 2023** from the same region and see what happens.
+Now, Let's Replace the AMI ID with `Amazon Linux AMI 2023` from the same region and see what happens.
 
-**Note:** To get the **Amazon Linux AMI 2023** go to EC2 Instances, click on Launch and under the **Amazon Linux AMI 2023** copy it and paste in File.
+`Note:` To get the `Amazon Linux AMI 2023` go to EC2 Instances, click on Launch and under the `Amazon Linux AMI 2023` copy it and paste in File.
 ```
 vi example.tf
 ```
@@ -211,7 +211,7 @@ terraform plan
 terraform apply
 ```
 Once Applied then go to the console and see that the Previous EC2 is being destroyed and new EC2 is getting created.
-    - Also verify that the OS is **Amazon Linux AMI 2023**
+    - Also verify that the OS is `Amazon Linux AMI 2023`
 ```
 cat terraform.tfstate
 ```
@@ -231,7 +231,7 @@ cd /home/ubuntu/EC2-lab/
 ```
 mkdir variables-lab && cd variables-lab/
 ```
-Now Create four Files ie. **provider.tf,** **vars.tf,** **terraform.tfvars,** **instance.tf.**
+Now Create four Files ie. `provider.tf,` `vars.tf,` `terraform.tfvars,` `instance.tf.`
 ```
 vi provider.tf
 ```
@@ -304,9 +304,9 @@ terraform apply -var-file=<var file name>
 ```
 vi instance.tf
 ```
-Delete the existing lines and Add the given lines, by pressing "INSERT" and replacing **YourName**
+Delete the existing lines and Add the given lines, by pressing "INSERT" and replacing `YourName`
 
-**Note:** To delete all the lines at a time use the commands `Esc+gg+dG` and once cleared then add the new lines.
+`Note:` To delete all the lines at a time use the commands `Esc+gg+dG` and once cleared then add the new lines.
 ```
 resource "aws_instance" "terraform_example"{
   ami = var.AMIS[var.Linux_distro]
@@ -324,7 +324,7 @@ vi vars.tf
 ```
 Delete all existing lines and Add the given lines, by pressing "INSERT" Also ensure to replace your `Region,` `AMi IDs` of the same region for `redhat,` `ubuntu` and `amazon`
 
-**Note:** To delete all the lines at a time use `Esc+gg+dG`
+`Note:` To delete all the lines at a time use `Esc+gg+dG`
 ```
 variable "AWS_ACCESS_KEY"{}
 variable "AWS_SECRET_KEY"{}
@@ -458,11 +458,11 @@ rm -rf output-variable-lab-v0.13.5.tar.gz
 
 ### Task-1: Create a S3 Bucket using AWS Console 
 
-* Create a new S3 bucket in your Allocated Region by name: "**youryame-terraform**".
+* Create a new S3 bucket in your Allocated Region by name: "`youryame-terraform`".
 * While creating,
-    - Select "**ACLs enabled**".
-    - Uncheck "**block public access**" and select "**I acknowledge that the current settings might result in this bucket and the objects within becoming public**".
-    - "**Enable versioning**".
+    - Select "`ACLs enabled`".
+    - Uncheck "`block public access`" and select "`I acknowledge that the current settings might result in this bucket and the objects within becoming public`".
+    - "`Enable versioning`".
     - Then, click on `Create bucket`
 * Once done, To cross-check whether the Bucket is created or not, run the below command in CLI.
 ```
@@ -498,7 +498,7 @@ Once done, save the file and follow further steps.
 ```
 cat provider.tf
 ```
-Now, Create a New Configuration File for storing "**terraform.tfstate**" file in the backend. (ie. **Amazon S3.**)
+Now, Create a New Configuration File for storing "`terraform.tfstate`" file in the backend. (ie. `Amazon S3.`)
 
 ```
 vi backend.tf
@@ -532,12 +532,12 @@ terraform plan
 ```
 terraform apply
 ```
-* Go to the S3 bucket and click on **terraform** > **remotestate** > In Properties Copy the **Object URL** and paste it in Browser.
+* Go to the S3 bucket and click on `terraform` > `remotestate` > In Properties Copy the `Object URL` and paste it in Browser.
   (By default it shows Access Denied)
-* To view the content of the file, in S3 Bucet tab, Click on permission and click on **Edit** under **Access control list (ACL)** > **Everyone (public access)** > Check **"Read"** then check **I understand the effects of these changes on this object** and then Click on **Save changes**
-* Refresh the Object URL Page (or again Copy-paste the **object URL** into the web browser).
+* To view the content of the file, in S3 Bucet tab, Click on permission and click on `Edit` under `Access control list (ACL)` > `Everyone (public access)` > Check `"Read"` then check `I understand the effects of these changes on this object` and then Click on `Save changes`
+* Refresh the Object URL Page (or again Copy-paste the `object URL` into the web browser).
 * Now, You should be able to access the state file and View the resources.
-  (It shows the attributes of a single resource in the Terraform state of **aws_instance.terraform-remoteState**.)
+  (It shows the attributes of a single resource in the Terraform state of `aws_instance.terraform-remoteState`.)
 
 Use the "terraform destroy" command to clean the infrastructure used in this lab, 
 ```
@@ -546,7 +546,7 @@ terraform destroy
 ```
 cd ..
 ```
-* Once done, Remove the directory and Zip file using "**rm -rf**"
+* Once done, Remove the directory and Zip file using "`rm -rf`"
 ```
 rm -rf remote-state-lab
 ```
@@ -554,7 +554,7 @@ rm -rf remote-state-lab
 rm -rf remote_state_lab.tar.gz
 ```
 
-**Note:** Also Ensure to delete the bucket. (To delete, first empty the Bucket and then Delete it.)
+`Note:` Also Ensure to delete the bucket. (To delete, first empty the Bucket and then Delete it.)
 
 #### =============================END of LAB-04=============================
 
@@ -838,7 +838,7 @@ stress --cpu 3 -v --timeout 300
 * Go to AWS console > CloudWatch > Alarms and view the alarm and observe the CPU Utilization.
 * To check whether the new Instance is added, Go to AWS console > EC2 > Instances. You can see that one more instance is created with the same name because of the high CPU.  
 
-Once done **Exit** from EC2 Instance
+Once done `Exit` from EC2 Instance
 ```
 terraform destroy
 ```
@@ -895,7 +895,7 @@ terraform init
 ```
 terraform plan
 ```
-**Note:** If you find any error on Line No-24 (**name = "mydb"**) just open file and Comment it by adding #.
+`Note:` If you find any error on Line No-24 (`name = "mydb"`) just open file and Comment it by adding #.
 ```
 terraform apply -auto-approve
 ```
@@ -909,11 +909,11 @@ sudo apt-get update
 sudo apt-get install mysql-client
 ```
 Get the endpoint from the AWS console. do not include the port number while entering the endpoint
-* MySQL -u admin -h **mysql.cfkfveiseeie.us-east-2.rds.amazonaws.com** -p
+* MySQL -u admin -h `mysql.cfkfveiseeie.us-east-2.rds.amazonaws.com` -p
 ```
 mysql -u admin -h <endpoint> -p
 ```
-**Note:** When it prompts for the password enter `password`
+`Note:` When it prompts for the password enter `password`
 
 After LogingIn Use below Commands for DataBases
 ```
@@ -984,8 +984,8 @@ select NAME, AGE from customers;
 ```
 drop table customers;
 ```
-* **Exit** from mysql client.
-* **Exit** from the mysql **anchor EC2.**
+* `Exit` from mysql client.
+* `Exit` from the mysql `anchor EC2.`
 ```
 terraform destroy
 ```
@@ -1008,7 +1008,7 @@ cd /home/ubuntu
 ```
 mkdir iam-users && cd iam-users
 ```
-Create a new **iam.tf** file to define your IAM resources.
+Create a new `iam.tf` file to define your IAM resources.
 ```
 vi iam.tf
 ```
@@ -1081,7 +1081,7 @@ Cat all files to see the module structure
 ```
 vi main.tf
 ```
-Add the below code after block **module "my_security_group"**
+Add the below code after block `module "my_security_group"`
 ```
 output "secgrpid" {
   description = "Newly created sec grp"
@@ -1095,11 +1095,11 @@ No change needed
 ```
 vi variables.tf 
 ```
-**Note:**
+`Note:`
 
-Replace the Default **VPC ID** & **Subnet ID** and **AMI Id** from your Allocated region in **variable.tf** file.
-* **Change vpc_id** to any VPC in your region (Ex: vpc-0e608033e14b01c3c)
-* **Change subnet id** Use any available subnets from AZ **a or b**. (Ex: subnet-086dd80df2e64b56b)
+Replace the Default `VPC ID` & `Subnet ID` and `AMI Id` from your Allocated region in `variable.tf` file.
+* `Change vpc_id` to any VPC in your region (Ex: vpc-0e608033e14b01c3c)
+* `Change subnet id` Use any available subnets from AZ `a or b`. (Ex: subnet-086dd80df2e64b56b)
 
 Save it
 
@@ -1122,8 +1122,8 @@ terraform plan
 ```
 terraform apply -auto-approve
 ```
-**Note:** 
-* If it is showing any **Error** for **Security group / KeyPair**, It means that they are already existing, delete the Keypair/Security Group in Console or Rename it in **variable.tf** file.
+`Note:` 
+* If it is showing any `Error` for `Security group / KeyPair`, It means that they are already existing, delete the Keypair/Security Group in Console or Rename it in `variable.tf` file.
 
 Once the resources are created. Then, verify all the resources and then destroy them.
 ```
@@ -1134,91 +1134,91 @@ terraform destroy
 ## Frequently used Terraform Commands with Explanation
 1. terraform version
 
-**Explanation:** This command displays the version of Terraform currently installed on your system. It's a quick way to check the installed version and make sure it matches the version you intend to use.
+`Explanation:` This command displays the version of Terraform currently installed on your system. It's a quick way to check the installed version and make sure it matches the version you intend to use.
 ```
 terraform version
 ```
 2. terraform init
 
-**Explanation:** This command initializes and Prepares your working directory. It downloads the necessary provider plugins and sets up the backend configuration defined in your terraform block.
+`Explanation:` This command initializes and Prepares your working directory. It downloads the necessary provider plugins and sets up the backend configuration defined in your terraform block.
 ```
 terraform init
 ```
 3. terraform providers
 
-**Explanation:** This command shows a list of installed provider plugins along with their versions. Providers are responsible for managing resources on various cloud platforms.
+`Explanation:` This command shows a list of installed provider plugins along with their versions. Providers are responsible for managing resources on various cloud platforms.
 ```
 terraform providers
 ```
 4. terraform fmt
 
-**Explanation:** This command automatically formats your Terraform configuration files to follow a consistent style. It helps in maintaining a clean and readable codebase.
+`Explanation:` This command automatically formats your Terraform configuration files to follow a consistent style. It helps in maintaining a clean and readable codebase.
 ```
 terraform fmt
 ```
 5. terraform validate
 
-**Explanation:** This command validates the syntax and structure of your Terraform configuration files. It checks for any errors or issues in your code.
+`Explanation:` This command validates the syntax and structure of your Terraform configuration files. It checks for any errors or issues in your code.
 ```
 terraform validate
 ```
 6. terraform plan
 
-**Explanation:** This command generates an execution plan. It compares the current state of your infrastructure with the desired state defined in your Terraform files. It shows you what changes Terraform will make to achieve the desired state without actually making those changes.
+`Explanation:` This command generates an execution plan. It compares the current state of your infrastructure with the desired state defined in your Terraform files. It shows you what changes Terraform will make to achieve the desired state without actually making those changes.
 ```
 terraform plan
 ```
 7. terraform apply
 
-**Explanation:** This command applies the changes defined in your Terraform configuration to the infrastructure. It creates, updates, or deletes resources as necessary to match the desired state.
+`Explanation:` This command applies the changes defined in your Terraform configuration to the infrastructure. It creates, updates, or deletes resources as necessary to match the desired state.
 ```
 terraform apply
 ```
 8. terraform output
 
-**Explanation:** This command displays the values of **output variables** defined in your Terraform configuration. Output variables provide information about the resources created or managed by Terraform.
+`Explanation:` This command displays the values of `output variables` defined in your Terraform configuration. Output variables provide information about the resources created or managed by Terraform.
 ```
 terraform output
 ```
 9. terraform show
 
-**Explanation:** This command displays the current state of your infrastructure as recorded in the Terraform state file. It provides a human-readable representation of the resources that Terraform is managing, along with their attributes and current values.
+`Explanation:` This command displays the current state of your infrastructure as recorded in the Terraform state file. It provides a human-readable representation of the resources that Terraform is managing, along with their attributes and current values.
 ```
 terraform show
 ```
 10. terraform get
 
-**Explanation:** This command is used to download and update the modules specified in your configuration. Modules are reusable components that encapsulate infrastructure resources and their configurations.
+`Explanation:` This command is used to download and update the modules specified in your configuration. Modules are reusable components that encapsulate infrastructure resources and their configurations.
 ```
 terraform get
 ```
 11. terraform destroy
 
-**Explanation:** This command is used to destroy the infrastructure defined in your Terraform configuration. It deletes all the resources that were created using Terraform.
+`Explanation:` This command is used to destroy the infrastructure defined in your Terraform configuration. It deletes all the resources that were created using Terraform.
 ```
 terraform destroy
 ```
 12. terraform import
 
-**Explanation:** The terraform import command allows you to import existing infrastructure resources into your Terraform state. This is useful when you have resources that were not initially created and managed by Terraform, but you want to start managing them using Terraform moving forward.
+`Explanation:` The terraform import command allows you to import existing infrastructure resources into your Terraform state. This is useful when you have resources that were not initially created and managed by Terraform, but you want to start managing them using Terraform moving forward.
 ```
 terraform import
 ```
 13. terraform refresh
 
-**Example:** Let's say you have an AWS EC2 instance defined in your configuration. If someone manually stops or starts the instance using the AWS Management Console, Terraform wouldn't be aware of this change until you run terraform refresh. Once you do, Terraform will update its state to match the current status of the instance.
+`Example:` Let's say you have an AWS EC2 instance defined in your configuration. If someone manually stops or starts the instance using the AWS Management Console, Terraform wouldn't be aware of this change until you run terraform refresh. Once you do, Terraform will update its state to match the current status of the instance.
 ```
 terraform refresh
 ```
 14. terraform login
 
-**Explanation:** This command is used to obtain and save credentials for a remote host, typically used with remote backends.
+`Explanation:` This command is used to obtain and save credentials for a remote host, typically used with remote backends.
 ```
 terraform login
 ```
 15. terraform logout
 
-**Explanation:** This command removes locally-stored credentials for a remote host.
+`Explanation:` This command removes locally-stored credentials for a remote host.
 ```
 terraform logout
 ```
@@ -1226,7 +1226,7 @@ terraform logout
 
 *terraform taint aws_instance.example*
 
-**Explanation:** This command marks a resource instance as not fully functional. It's used to indicate that a resource has issues and needs to be recreated.
+`Explanation:` This command marks a resource instance as not fully functional. It's used to indicate that a resource has issues and needs to be recreated.
 ```
 terraform taint
 ```
@@ -1234,7 +1234,7 @@ terraform taint
 
 *terraform untaint aws_instance.example*
 
-**Explanation:** This command removes the 'tainted' state from a resource instance, indicating that the resource is now functional.
+`Explanation:` This command removes the 'tainted' state from a resource instance, indicating that the resource is now functional.
 ```
 terraform untaint
 ```
@@ -1242,7 +1242,7 @@ terraform untaint
 
 *terraform workspace new dev* (This would create a new workspace named "dev.")
 
-**Explanation:** This category of commands is used for workspace management. Workspaces allow you to manage multiple environments (such as development, staging, and production) within the same configuration.
+`Explanation:` This category of commands is used for workspace management. Workspaces allow you to manage multiple environments (such as development, staging, and production) within the same configuration.
 ```
 terraform workspace
 ```
