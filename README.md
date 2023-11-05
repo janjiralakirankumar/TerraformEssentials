@@ -278,7 +278,7 @@ Save the file using "ESCAPE + :wq!"
 ```
 vi instance.tf
 ```
-Add the given lines, by pressing "INSERT" Also replace your region's AMI ID and YourName.
+Add the given lines, by pressing "INSERT" Also replace your `region's AMI ID` and `YourName`
 ```
 resource "aws_instance" "terraform_example"{
   ami = "ami-07efac79022b86107"
@@ -300,21 +300,16 @@ terraform apply
 ```
 Once applied, go to the Console and check that the new EC2 is created using Variables.
 
-Use the "terraform destroy" command to clean the infrastructure used in this lab
+Use the `"terraform destroy"` command to clean the infrastructure used in this lab
 ```
 terraform destroy -auto-approve
-```
-#### Additional Note (Optional)
-* If the name of the tfvars files is anything other than terraform.tfvars then you can use the below command.
-```
-terraform apply -var-file=<var file name>
 ```
 
 ### Task-2: Implementing map variables that dynamically fetch AMI based on the Linux distro selected
 ```
 vi instance.tf
 ```
-Delete the existing lines and Add the given lines, by pressing "INSERT" and replacing `YourName`
+Delete all the existing lines and Add the given code, by pressing "INSERT" and replacing `YourName`
 
 `Note:` To delete all the lines at a time use the commands `Esc+gg+dG` and once cleared then add the new lines.
 ```
@@ -328,7 +323,7 @@ resource "aws_instance" "terraform_example"{
 ```
 Save the file using "ESCAPE + :wq!"
 
-Now, Also make changes in the Vars.tf file.
+Now, Also make changes in the `Vars.tf` file.
 ```
 vi vars.tf
 ```
@@ -343,7 +338,7 @@ variable "AWS_REGION"{
   }
 
 variable "Linux_distro"{
-  #description="Please Enter the Linux distro (redhat , ubuntu, amazon )"
+  #description = "Please Enter the Linux distro (redhat, ubuntu, amazon)"
   default = "amazon"
   }
 
@@ -369,12 +364,13 @@ terraform plan -var 'Linux_distro=redhat' -out myplan
 ```
 terraform apply myplan
 ```
-Use the "terraform destroy" command for cleaning the infrastructure used in this lab
+Use the `terraform destroy` command to clean the infrastructure used in this lab
 ```
 terraform destroy
 ```
 Once Done remove the `EC2-lab` Directory.
 ```
+cd ~
 rm -rf EC2-lab
 ```
 #### =========================END of LAB-02=========================
@@ -404,7 +400,7 @@ cat output.tf
 ```
 cat vars.tf
 ```
-In vars.tf file delete all the lines and add the below code (Updated with Regions AMI IDs). Also, ensure to replace your `region` and add your `region's ami` in the list as well.
+In `vars.tf` file delete all the lines and add the below code. Also, ensure to replace your `region` and Include your `region's Ubuntu AMI ID` to the list.
 ```
 vi vars.tf
 ```
@@ -448,15 +444,13 @@ terraform output Public_ip
 ```
 terraform output Private_ip
 ```
-Use the "terraform destroy" command for cleaning the infrastructure used in this lab.
+Use the `terraform destroy` command to clean the infrastructure used in this lab.
 ```
 terraform destroy
 ```
-```
-cd ..
-```
 Once done, remove the directory and Zip file using the `rm -rf` command below.
 ```
+cd ~
 rm -rf output-variable-lab
 ```
 ```
@@ -466,13 +460,13 @@ rm -rf output-variable-lab-v0.13.5.tar.gz
 
 ## Lab-4 : Remote State using Amazon Simple Storage Service 
 
-### Task-1: Create a S3 Bucket using AWS Console 
+### Task-1: Manually Create a S3 Bucket using AWS Console 
 
-* Create a new S3 bucket in your Allocated Region by name: "`youryame-terraform`".
+* Create a new S3 bucket in your Allocated Region by name: `youryame-terraform` (S3 allows lowercase only)
 * While creating,
-    - Select "`ACLs enabled`".
-    - Uncheck "`block public access`" and select "`I acknowledge that the current settings might result in this bucket and the objects within becoming public`".
-    - "`Enable versioning`".
+    - Select `"ACLs enabled"`
+    - Uncheck `"block public access"` and select `"I acknowledge that the current settings might result in this bucket and the objects within becoming public"`
+    - `"Enable versioning"`
     - Then, click on `Create bucket`
 * Once done, To cross-check whether the Bucket is created or not, run the below command in CLI.
 ```
@@ -480,7 +474,8 @@ aws s3 ls
 ```
 ### Task-2: Configure Remote State
 ```
-cd /home/ubuntu/EC2-lab/
+cd ~
+mkdir S3-Lab && cd S3-Lab
 ```
 ```
 wget https://s3.ap-south-1.amazonaws.com/files.cloudthat.training/devops/terraform-essentials/remote_state_lab.tar.gz
@@ -500,10 +495,11 @@ cat instance.tf
 ```
 cat vars.tf
 ```
-In `vars.tf` file ensure to replace your `region` and add your `region's ami` in the list as well.
 ```
 vi vars.tf
 ```
+In `vars.tf` file ensure to replace your `region` and Include your `region's Ubuntu AMI ID` to the list.
+
 Once done, save the file and follow further steps.
 ```
 cat provider.tf
@@ -544,27 +540,21 @@ terraform apply
 ```
 * Go to the S3 bucket and click on `terraform` > `remotestate` > In Properties Copy the `Object URL` and paste it in Browser.
   (By default it shows Access Denied)
-* To view the content of the file, in S3 Bucet tab, Click on permission and click on `Edit` under `Access control list (ACL)` > `Everyone (public access)` > Check `"Read"` then check `I understand the effects of these changes on this object` and then Click on `Save changes`
-* Refresh the Object URL Page (or again Copy-paste the `object URL` into the web browser).
+* To view the content of the file, in S3 Bucket tab, Click on `permission` and click on `Edit` under `Access control list (ACL)` > `Everyone (public access)` > Check `"Read"` then check `I understand the effects of these changes on this object` and then Click on `Save changes`
+* Refresh the Object URL Page in the browser (or again Copy-paste the `object URL` into the web browser).
 * Now, You should be able to access the state file and View the resources.
   (It shows the attributes of a single resource in the Terraform state of `aws_instance.terraform-remoteState`.)
 
-Use the "terraform destroy" command to clean the infrastructure used in this lab, 
+Use the `terraform destroy` command to clean the infrastructure used in this lab, 
 ```
 terraform destroy
 ```
+Once done, Remove the directory and Zip file using "`rm -rf`"
 ```
-cd ..
+cd ~
+rm -rf S3-Lab
 ```
-* Once done, Remove the directory and Zip file using "`rm -rf`"
-```
-rm -rf remote-state-lab
-```
-```
-rm -rf remote_state_lab.tar.gz
-```
-
-`Note:` Also Ensure to delete the bucket. (To delete, first empty the Bucket and then Delete it.)
+**Note:** Also Ensure to delete the `S3 Bucket` (To delete, first empty the Bucket and then Delete it.)
 
 #### =========================END of LAB-04=========================
 
@@ -584,35 +574,39 @@ tar -xvf lab_10_vpc_v0.13.tar.gz
 cd lab_10_vpc/
 ls
 ```
-Now, Open the files one by one and replace the regions (ap-south-1) and Availability Zones (ap-south-1a)
-
-In `vpc.tf` file Add `#` in front of `line 12, ie... enable_classiclink = "false"` and replace your `AZs`
+Now, Open the files one by one and replace your regions (**Ex:** ap-south-1) and for Availability Zones (**Ex:** ap-south-1a)
 ```
 vi vpc.tf
 ```
+In `vpc.tf` file Add `#` in front of line 12, ie... `enable_classiclink = "false"` and replace your `AZs`
 ```
 cat nat.tf
 ```
-In `vars.tf` file Update your Region.
+No Updated need in `nat.tf`
 ```
 vi vars.tf
 ```
+In `vars.tf` file Update your Region.
 ```
 terraform init
 ```
 ```
 terraform plan
 ```
+**Note:** In `terraform plan` if it shows any warning just ignore it. But, if it shows any error we need to correct it.
+
 ```
 terraform apply -auto-approve
 ```
+Once applied, In the Console check that the resources are getting created like `VPC,` `Subnets,` `Internet Gateway` etc....
+
 ### Task-2: Launching an EC2 Instance 
 
-Create a new File for EC2 Instance
+Create a `new File` for EC2 Instance
 ```
 vi instance.tf 
 ```
-Add the given lines, by pressing "INSERT" and replace `Yourname-Lab11-ec2` with your name.
+Add the given lines, by pressing "INSERT" and replace `Yourname-Lab5-ec2` with your name.
 ```
 resource "aws_instance" "example" {
   ami           = var.AMIS[var.AWS_REGION]
@@ -658,6 +652,8 @@ resource "aws_security_group" "allow-ssh" {
 }
 ```
 Save the file using "ESCAPE + :wq!"
+
+Now, Create a new keypair that we use for our EC2 Instance.
 ```
 ssh-keygen -f mykey
 ```
@@ -667,7 +663,7 @@ ls
 ```
 vi key.tf
 ```
-Add the given lines, by pressing "INSERT" and replace with your name.
+Add the given lines, by pressing "INSERT" and replace with `your name`.
 ```
 resource "aws_key_pair" "mykeypair" {
   key_name   = "YourName-KeyPair"
@@ -678,9 +674,9 @@ Save the file using "ESCAPE + :wq!"
 ```
 vi vars.tf
 ```
-Add the given lines, by pressing "INSERT" and replace your region and add your Region's AMI Details to list.
+Add the given lines, by pressing "INSERT" and replace your `region` and add your `Region's AMI` to the list.
 
-##### First 3 lines are already present. you can add the remaining lines.
+##### The first 3 lines are already present. you can add the remaining lines.
 ```
 variable "AWS_REGION" {
   default = "us-east-2"
@@ -712,21 +708,23 @@ terraform plan
 ```
 terraform apply -auto-approve
 ```
-See details of the specific resource
+Once applied, verify that the `EC2 Instance` is created in the `Custom VPC` that we created in Task-1.
+
+Also, to See the `Public IP` of the newly created EC2 Instance use the below command.
 ```
 terraform state show aws_instance.example | grep public_ip
 ```
+To `SSH` into newly launched EC2, run below command.
 ```
 ssh -i mykey -l ubuntu <Your Public IP>
 ```
-exit
+Once verified, `Exit` from Instance.
 
 ### Task-3: Connecting an EBS with EC2 Instance 
 ```
 vi instance.tf 
 ```
-Add the given lines, by pressing "INSERT" 
-First block will be already present in the file. But, replace the entire code and update your `AvailabilityZone,` `YourName` in `Instance` and `EBS Volume`
+Add the given lines, by pressing "INSERT" The first block will be already present in the file. But, replace the entire code and update your `AvailabilityZone,` `YourName` in `AWS Instance` and `EBS Volume` both.
 ```
 resource "aws_instance" "example" {
   ami = var.AMIS[var.AWS_REGION]
@@ -761,14 +759,16 @@ Save the file using "ESCAPE + :wq!"
 ```
 terraform apply
 ```
-* Go to `EC2 dashboard` and select the `EC2 Instance.` 
+* Go to `EC2 Dashboard` and select the `EC2 Instance.` 
 * Then select `storage` and see that the new volume is attached.
 
-Once Done, Use the `terraform destroy` command to clean the infrastructure used in this lab, remove the directory using rm -rf
+Once Done, Use the `terraform destroy` command to clean the infrastructure used in this lab.
 ```
 terraform destroy -auto-approve
 ```
-Note: Ensure to crosscheck in the Management Console whether all the resources are destroyed or not or else it will charge you. 
+**Note:** Ensure to crosscheck that all the resources are destroyed or else it will charge you. 
+
+Remove the directory and Zip file using `rm -rf`
 ```
 cd ..
 rm -rf lab_10_vpc
@@ -800,14 +800,14 @@ cat autoscaling.tf
 ```
 cat autoscalingpolicy.tf
 ```
-In `vpc.tf` file Add `#` in front of `line 7, ie... enable_classiclink = "false"` and replace your `AZs` for 3 public and 3 Private Subnets.
 ```
 vi vpc.tf
 ```
-In `vars.tf` file replace your region and your region's AMI ID in the list.
+In `vpc.tf` file Add `#` in front of line 7, ie... `enable_classiclink = "false"` and replace your `AZs` for `3 public Subnets` and `3 Private Subnets`
 ```
 vi vars.tf
 ```
+In `vars.tf` file replace your `region` and Include your `region's AMI ID` in the list.
 ```
 ssh-keygen -f mykey
 ls
@@ -823,9 +823,9 @@ terraform apply
 ```
 Now, Check In the Console that the resources are created 
 
-  1. EC2 dashboard >> Auto Scaling Groups >> example-autoscaling
-  2. Amazon Cloud Watch >> Alarms.
-  3. VPC >> Subnets, RT, etc..
+  1. `EC2 dashboard` >> `Auto Scaling Groups` >> `example-autoscaling`
+  2. `Amazon Cloud Watch` >> `Alarms`
+  3. `VPC,` `Subnets,` and `RT` etc...
 
 
 ### Task-2: Increase CPU utilization in your new ec2 instance.
@@ -844,9 +844,12 @@ sudo apt-get install stress
 ```
 stress --cpu 3 -v --timeout 300
 ```
-* Now go back to AWS console > EC2 Dashboard > Instances then select the instance Created by ASG > Description and click on Monitoring. Now you see High CPU utilization (Or)
-* Go to AWS console > CloudWatch > Alarms and view the alarm and observe the CPU Utilization.
-* To check whether the new Instance is added, Go to AWS console > EC2 > Instances. You can see that one more instance is created with the same name because of the high CPU.  
+* Now go back to `AWS console` > `EC2 Dashboard` > `Instances` then select the New Instance Created by `ASG` > `Description` and click on `Monitoring.` Now you see High CPU utilization
+
+  (Or)
+  
+* Go to `AWS Console` > `CloudWatch` > `Alarms` and observe the alarm states and CPU Utilization.
+* To check whether the `New Instance` is added, Go to `AWS Console` > `EC2` > `Instances.` You can see that one more instance is created with the same name because of the high CPU.  
 
 Once done `Exit` from EC2 Instance
 ```
@@ -854,9 +857,7 @@ terraform destroy
 ```
 Once done, remove the Directory and Zip file.
 ```
-cd ..
-```
-```
+cd ~
 rm -rf lab_14_autoscaling
 ```
 ```
@@ -880,21 +881,21 @@ cd lab_12_rds
 ```
 ls
 ```
-In `rds.tf` file in line-24 comment the line by adding #.
 ```
 vi rds.tf
 ```
+In `rds.tf` file in line-24 comment the line by adding #.
 ```
 cat output.tf
 ```
-In `vpc.tf` file Add `#` in front of `line 7, ie... enable_classiclink = "false"` and replace your `AZs` for 3 public and 3 Private Subnets.
 ```
 vi vpc.tf
 ```
-In `vars.tf` file replace your `region` and add your `region's AMI ID` in the list.
+In `vpc.tf` file Add `#` in front of line 7, ie... `enable_classiclink = "false"` and replace your `AZs` for `3 Public Subnets` and `3 Private Subnets`
 ```
 vi vars.tf
 ```
+In `vars.tf` file replace your `region` and add your `region's AMI ID` in the list.
 ```
 ssh-keygen -f mykey
 ls
@@ -918,8 +919,9 @@ sudo apt-get update
 ```
 sudo apt-get install mysql-client
 ```
-Get the endpoint from the AWS console. do not include the port number while entering the endpoint
-* MySQL -u admin -h `mysql.cfkfveiseeie.us-east-2.rds.amazonaws.com` -p
+Get the endpoint from the AWS console. (do not include the port number while entering the endpoint)
+
+**Example:** MySQL -u admin -h `mysql.cfkfveiseeie.us-east-2.rds.amazonaws.com` -p
 ```
 mysql -u admin -h <endpoint> -p
 ```
@@ -939,7 +941,7 @@ show databases;
 ```
 use demoDB
 ```
-#### Use the 'status' command to list the DB in which you are in.
+#### Use the `status` command to list the DB in which you are in.
 ```
 status
 ```
@@ -983,10 +985,11 @@ VALUES (5, 'Jane', 27, 'NewYork', 60000.00 );
 INSERT INTO customers (ID,NAME,AGE,ADDRESS,SALARY)
 VALUES (6, 'Komal', 22, 'Bangalore', 45000.00 );
 ```
-#### Display the table:
+#### To view the table:
 ```
 SELECT * FROM customers;
 ```
+To view only selected attributes, run below command.
 ```
 select NAME, AGE from customers;
 ```
@@ -1001,9 +1004,7 @@ terraform destroy
 ```
 Once destroyed, Delete the directory and zip file as well.
 ```
-cd ..
-```
-```
+cd ~
 rm -rf lab_12_rds
 ```
 ```
@@ -1058,12 +1059,13 @@ terraform plan
 ```
 terraform apply
 ```
-Destroy the resources once done.
+Once applied, verify the IAM User and group in the console and then Destroy.
 ```
 terraform destroy
 ```
 Once destroyed, remove the Directory.
 ```
+cd ~
 rm -rf iam-users
 ```
 #### =========================END of LAB-08=========================
@@ -1101,19 +1103,17 @@ output "secgrpid" {
 ```
 cat provider.tf
 ```
-No change needed
+**Note:** No change needed in `provider.tf`
 ```
 vi variables.tf 
 ```
-`Note:`
+**Note:** Replace the `Region` Default `VPC ID,` `AMI Id` and `Subnet ID` from your Allocated region in `variable.tf` file.
+* `Change vpc_id` to default VPC in your region (**Ex:** vpc-0e608033e14b01c3c)
+* `Change subnet id` Use any available subnets from AZ `a or b`. (**Ex:** subnet-086dd80df2e64b56b)
 
-Replace the Default `VPC ID` & `Subnet ID` and `AMI Id` from your Allocated region in `variable.tf` file.
-* `Change vpc_id` to any VPC in your region (Ex: vpc-0e608033e14b01c3c)
-* `Change subnet id` Use any available subnets from AZ `a or b`. (Ex: subnet-086dd80df2e64b56b)
+Then, Save it
 
-Save it
-
-Now, Create a key pair. The same public key will be saved into the EC2 being launched.
+Now, Create a key pair. The same public key will be used in the new EC2 Instance.
 ```
 ssh-keygen -f mykey
 ```
@@ -1132,8 +1132,8 @@ terraform plan
 ```
 terraform apply -auto-approve
 ```
-`Note:` 
-* If it is showing any `Error` for `Security group / KeyPair`, It means that they are already existing, delete the Keypair/Security Group in Console or Rename it in `variable.tf` file.
+**Note:**
+* If it is showing any `Error` for `Security group / KeyPair`, It means that they are already existing, Rename it in `variable.tf` file or delete the Keypair/Security Group in the Console.
 
 Once the resources are created. Then, verify all the resources and then destroy them.
 ```
