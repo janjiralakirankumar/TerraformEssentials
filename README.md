@@ -1285,3 +1285,44 @@ terraform workspace
 10. [Prepare for Terraform Certification](https://developer.hashicorp.com/terraform/tutorials/certification-003)
 11. [Terraform Beginner FAQs and Examples](https://www.hashicorp.com/resources/solutions-eng-webinar-episode-1-terraform)
 12. [hashicorp/terraform-GitHub guides](https://github.com/hashicorp/terraform-guides/tree/master/infrastructure-as-code)
+---
+
+Ssummary of each lab in the Terraform Essentials Cheat Sheet:
+
+**Lab-1: Creating an EC2 Instance in AWS and Installing Terraform**
+- In this lab, you manually create an EC2 instance in AWS and install Terraform on it.
+- The steps involve launching an EC2 instance with specific configurations, connecting to it, and then installing Terraform.
+- You create a basic local Terraform configuration to understand the basic Terraform workflow.
+- Finally, you destroy the resources created in this lab.
+
+**Lab-2: AWS EC2 instance creation using Terraform Variables**
+- In this lab, you use Terraform variables to create an EC2 instance.
+- You create a Terraform configuration that includes variables for AWS access keys, secret keys, and the region.
+- You also create a map variable that dynamically selects the AMI based on the Linux distro.
+- This lab helps you understand how to use variables in Terraform configurations.
+
+**Lab-3: Using Output Feature**
+- This lab demonstrates the use of the Terraform output feature to retrieve information about resources.
+- You create an EC2 instance and retrieve its public and private IP addresses using Terraform outputs.
+- It helps you understand how to extract and display data from Terraform resources.
+
+**Lab-4: Remote State using Amazon Simple Storage Service (S3)**
+- In this lab, you configure Terraform to store its state file in Amazon S3 as a remote backend.
+- You create an S3 bucket manually and configure Terraform to use this bucket as the backend to store the state file.
+- The lab demonstrates how to use remote state, which is crucial when working with Terraform in a team or on multiple machines.
+- You also learn about securing S3 buckets and managing access to them.
+
+**Lab-5: Launching VPC and EC2 Instance**
+This lab involves launching a Virtual Private Cloud (VPC) and creating subnets using Terraform. After creating the VPC, you launch an EC2 instance within it. You'll configure the VPC, subnets, security groups, and EC2 key pair. This lab provides hands-on experience with infrastructure provisioning on AWS using Terraform.
+
+**Lab-6: Launching Auto-Scaling Services**
+In this lab, you'll create an Auto Scaling Group (ASG) using Terraform. The ASG dynamically manages a group of EC2 instances based on traffic demand. You'll also create CloudWatch alarms to monitor the group's performance. You'll simulate increased CPU utilization in the instances to observe the ASG in action. This lab helps you understand how to scale your infrastructure automatically in response to varying workloads.
+
+**Lab-7: Creating a MySQL Database with RDS**
+This lab guides you through creating an Amazon RDS (Relational Database Service) instance for MySQL using Terraform. You'll set up the RDS instance, connect to it, and perform basic database operations. This lab demonstrates how to use Terraform to provision managed database services on AWS.
+
+**Lab-8: Creating IAM Users and Groups using Terraform**
+In this lab, you'll use Terraform to create IAM (Identity and Access Management) users and groups on AWS. You'll define IAM resources, including groups and users, and associate users with groups. This lab is a practical introduction to managing access control for AWS resources using Terraform.
+
+**Lab-9: Creating AWS Resources using Terraform Modules**
+This lab demonstrates the use of Terraform modules to provision AWS resources. It involves deploying resources like VPC, security groups, EC2 instances, and subnets using pre-built modules. This approach simplifies infrastructure provisioning by encapsulating resources into reusable modules. The lab focuses on module structuring and creating resources efficiently.
