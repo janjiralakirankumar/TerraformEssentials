@@ -191,7 +191,7 @@ To see what is saved in `terraform.tfstate` use the below command.
 ```
 cat terraform.tfstate
 ```
-### Task-4: Now, Let's Replace the AMI ID with `Amazon Linux AMI 2023` from the same region and see what happens.
+### Task-5: Now, Let's Replace the AMI ID with `Amazon Linux AMI 2023` from the same region and see what happens.
 
 `Note:` To get the `Amazon Linux AMI 2023` go to EC2 Instances, click on Launch, and select the `Amazon Linux AMI 2023` AMI and copy the ID and paste in File.
 ```
