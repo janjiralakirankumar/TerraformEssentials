@@ -11,17 +11,17 @@
      - VPC ID, Subnet ID, Security group ID, KeyPair Name.
 
 ## Table Of Contents
-* [Lab-1: Creating an EC2 Instance in AWS and Installing Terraform](https://github.com/janjiralakirankumar/TerraformEssentials/tree/main#lab-1-creating-an-ec2-instance-in-aws-and-installing-terraform)
-* [Lab-2: AWS EC2 instance creation using Terraform Variables](https://github.com/janjiralakirankumar/TerraformEssentials/tree/main#lab-2-aws-ec2-instance-creation-using-terraform-variables)
-* [Lab-3 : Using Output Feature](https://github.com/janjiralakirankumar/TerraformEssentials/tree/main#lab-3--using-output-feature)
-* [Lab-4 : Remote State using Amazon Simple Storage Service](https://github.com/janjiralakirankumar/TerraformEssentials/tree/main#lab-4--remote-state-using-amazon-simple-storage-service)
-* [Lab-5: Launching VPC and EC2 Instance](https://github.com/janjiralakirankumar/TerraformEssentials/tree/main#lab-5-launching-vpc-and-ec2-instance)
-* [Lab-6: Launching Auto-Scaling services](https://github.com/janjiralakirankumar/TerraformEssentials/tree/main#lab-6-launching-auto-scaling-services)
-* [Lab-7: Creating a MySQL Database with RDS](https://github.com/janjiralakirankumar/TerraformEssentials/tree/main#lab-7-creating-a-mysql-database-with-rds)
-* [Lab-8: Creating IAM Users, Groups using Terraform.](https://github.com/janjiralakirankumar/TerraformEssentials/tree/main#lab-8-creating-iam-users-groups-using-terraform)
-* [Lab-9: Creating AWS resources using terraform modules](https://github.com/janjiralakirankumar/TerraformEssentials/tree/main#lab-9-creating-aws-resources-using-terraform-modules)
-* [Frequently used Terraform Commands with Explanation](https://github.com/janjiralakirankumar/TerraformEssentials/tree/main#frequently-used-terraform-commands-with-explanation)
-* [Reference Links](https://github.com/janjiralakirankumar/TerraformEssentials/tree/main#reference-links)
+* [Lab-1: Creating an EC2 Instance in AWS and Installing Terraform](https://github.com/janjiralakirankumar/TerraformEssentials?tab=readme-ov-file#lab-1-creating-an-ec2-instance-in-aws-and-installing-terraform)
+* [Lab-2: AWS EC2 instance creation using Terraform Variables](https://github.com/janjiralakirankumar/TerraformEssentials?tab=readme-ov-file#lab-2-aws-ec2-instance-creation-using-terraform-variables)
+* [Lab-3 : Using Output Feature](https://github.com/janjiralakirankumar/TerraformEssentials?tab=readme-ov-file#lab-3--using-output-feature)
+* [Lab-4 : Remote State using Amazon Simple Storage Service](https://github.com/janjiralakirankumar/TerraformEssentials?tab=readme-ov-file#lab-4--remote-state-using-amazon-simple-storage-service)
+* [Lab-5: Launching VPC and EC2 Instance](https://github.com/janjiralakirankumar/TerraformEssentials?tab=readme-ov-file#lab-5-launching-vpc-and-ec2-instance)
+* [Lab-6: Launching Auto-Scaling services](https://github.com/janjiralakirankumar/TerraformEssentials?tab=readme-ov-file#lab-6-launching-auto-scaling-services)
+* [Lab-7: Creating a MySQL Database with RDS](https://github.com/janjiralakirankumar/TerraformEssentials?tab=readme-ov-file#lab-7-creating-a-mysql-database-with-rds)
+* [Lab-8: Creating IAM Users, Groups using Terraform.](https://github.com/janjiralakirankumar/TerraformEssentials?tab=readme-ov-file#lab-8-creating-iam-users-groups-using-terraform)
+* [Lab-9: Creating AWS resources using terraform modules](https://github.com/janjiralakirankumar/TerraformEssentials?tab=readme-ov-file#lab-9-creating-aws-resources-using-terraform-modules)
+* [Frequently used Terraform Commands with Explanation](https://github.com/janjiralakirankumar/TerraformEssentials?tab=readme-ov-file#frequently-used-terraform-commands-with-explanation)
+* [Reference Links](https://github.com/janjiralakirankumar/TerraformEssentials?tab=readme-ov-file#reference-links)
 
 ## Lab-1: Creating an EC2 Instance in AWS and Installing Terraform
 
@@ -49,18 +49,18 @@ sudo apt update
 sudo apt install wget unzip -y
 ```
 ```
-wget https://releases.hashicorp.com/terraform/1.6.3/terraform_1.6.3_linux_amd64.zip
+wget https://releases.hashicorp.com/terraform/1.6.3/terraform_1.7.2_linux_amd64.zip
 ```
 To know the latest Terraform version - [Install Terraform](https://developer.hashicorp.com/terraform/downloads)
 ```
-unzip terraform_1.6.3_linux_amd64.zip
+unzip terraform_1.7.2_linux_amd64.zip
 ```
 ```
 ls
 sudo mv terraform /usr/local/bin
 ```
 ```
-rm terraform_1.6.3_linux_amd64.zip
+rm terraform_1.7.2_linux_amd64.zip
 ```
 ```
 ls
@@ -191,7 +191,7 @@ To see what is saved in `terraform.tfstate` use the below command.
 ```
 cat terraform.tfstate
 ```
-Now, Let's Replace the AMI ID with `Amazon Linux AMI 2023` from the same region and see what happens.
+### Task-4: Now, Let's Replace the AMI ID with `Amazon Linux AMI 2023` from the same region and see what happens.
 
 `Note:` To get the `Amazon Linux AMI 2023` go to EC2 Instances, click on Launch, and select the `Amazon Linux AMI 2023` AMI and copy the ID and paste in File.
 ```
