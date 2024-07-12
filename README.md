@@ -77,6 +77,12 @@ sudo apt-get install python3-pip -y
 ```
 sudo pip3 install awscli
 ```
+(Or)
+```
+curl "https://awscli.amazonaws.com/awscli-exe-linux-x86_64.zip" -o "awscliv2.zip"
+unzip awscliv2.zip
+sudo ./aws/install
+```
 ```
 aws configure
 ```
